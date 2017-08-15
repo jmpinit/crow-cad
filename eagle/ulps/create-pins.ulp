@@ -1,0 +1,30 @@
+string commandBuffer = "";
+
+void cmd(string cmdText) {
+  string parts[] = { commandBuffer, cmdText };
+  commandBuffer = strjoin(parts, ';');
+}
+
+string pinFilePath = dlgFileOpen("Select pin file", "", "*.csv");
+
+string lines[];
+int lineCount = fileread(lines, pinFilePath);
+
+for (int i = 0; i < lineCount; i++) {
+  string columns[];
+  int columnCount = strsplit(columns, lines[i], ',');
+
+  if (columnCount != 2) {
+    exit(EXIT_FAILURE);
+  }
+
+  int pinNum = strtol(columns[0]);
+  string pinName = columns[1];
+
+  string pinCmd;
+  sprintf(pinCmd, "PIN '%s' (0 %f)", pinName, i / 10.0);
+  cmd(pinCmd);
+}
+
+exit(commandBuffer);
+
