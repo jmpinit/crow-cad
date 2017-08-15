@@ -1,0 +1,12 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"Owen Trueblood",
+	"description":	{
+		"":	""
+	},
+	"supportedOS":	"windows|mac",
+	"autodeskLibraries":	["application", "dashboard", "geometry", "materials", "userInterface", "utilities", "bRep", "components", "construction", "features", "fusion", "meshBody", "meshData", "sketch", "tSpline", "operations", "cam"],
+	"dynamicLoad": true,
+	"editEnabled":	true
+}
